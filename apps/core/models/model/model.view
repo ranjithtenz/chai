@@ -1,0 +1,10 @@
+view = [
+	# sections
+	{
+		attributes: [
+			'model',
+			'id_series',
+			'is_single'
+		]
+	}
+]

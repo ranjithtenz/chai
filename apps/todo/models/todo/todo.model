@@ -1,0 +1,12 @@
+{
+	'description':{
+		'type': 'Text',
+		'label':'Description',
+		'mandatory': 1
+	},
+	'status':{
+		'type':'Select',
+		'options':['Open','Closed'],
+		'label':'Status'
+	},
+}

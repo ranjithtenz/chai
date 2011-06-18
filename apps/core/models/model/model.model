@@ -1,0 +1,21 @@
+{
+	'model':'core.models.model',
+
+	'attributes': {
+		'model': {
+			'type' :'Data',
+			'label':'Model'
+			''
+		},
+
+		'is_single': {
+			'type' :'Check'
+			'label':'Is Single'
+		},
+
+		'id_series': {
+			'type':'Data',
+			'label':'ID Series'
+		}
+	}
+}
