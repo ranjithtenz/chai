@@ -1,0 +1,7 @@
+{	
+	'known_by':'project_name'
+	'attributes':{
+		'project_name': {'type':'Data', 'mandatory': True }
+		'description': {'type':'Text' }
+	}
+}

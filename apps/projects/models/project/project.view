@@ -1,0 +1,35 @@
+{
+	'model':'core.models.form',
+	'model_name': 'projects.models.project_view'
+
+	'sections': [
+		{
+			'model':'core.models.form_section',
+			'heading': 'Project Details',
+			'css': {
+				'model':'core.models.css',
+				'background-color':'BLUE'
+			}
+			'contents': [
+				'model':'core.models.form_section_contents',
+				{'type':'attribute', 'attribute_name':'project_name'}
+				{'type':'attribute', 'attribute_name':'description'}
+				{'type':'html', 'content': '''some html'''}
+			]
+		}, 
+
+		{
+			'heading': 'Project To Dos',
+			'contents': [
+				{'type':'list', 'list_type':'projects.model.todo'}
+			]
+		},
+
+		{
+			'heading': 'Project Team',
+			'contents': [
+				{'type':'list', 'list_type':'projects.model.project_member'}
+			]
+		}
+	]
+}
