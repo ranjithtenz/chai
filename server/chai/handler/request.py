@@ -1,3 +1,8 @@
+# Chai Project 0.1
+# (c) 2011 Web Notes Technologies
+# Chai Project may be freely distributed under MIT license
+# Authors: Rushabh Mehta (rmehta at gmail)
+
 class HTTPRequest:
 	"""
 	Wrapper around HTTPRequest
@@ -12,7 +17,8 @@ class HTTPRequest:
 		self.database = None
 		
 		self.set_cookies()
-		self.select_db()
+		self.connect_db()
+		self.load_session()
 	
 	def set_cookies(self):
 		"""
@@ -32,8 +38,32 @@ class HTTPRequest:
 				for c in cookies.values():
 					self.cookies[c.key] = c.value
 
-				
-	def select_db(self):
+	def connect_db(self):
 		"""
 		Selects db
 		"""
+		if self.cookies.get('db'):
+			config.db_name = self.cookies['db']
+		
+		from sqlachemy import create_engine, sessionmaker
+		
+		chai.db_engine = create_engine('mysql://%(db_user)s:%(db_password)s@localhost/%(db_name)s', config.__dict__)
+		chai.db_session = sessionmaker(bind = chai.db_engine)()
+		
+	def execute(self):
+		"""
+		Executes the request specified in "action". Action must be a direct
+		method call and should be "whitelisted" in the module
+		"""
+
+		module = ''
+		action = self.form.get('action')
+		if '.' in action:
+			module = '.'.join(action.split('.')[:-1])
+			action = action.split('.')[-1]
+
+			if action in module.getattr('whitelist'):
+				exec 'from %s import %s' % (module, cmd) in locals()
+			else:
+				chai.exception(T('Unpermitted Action'))
+				
