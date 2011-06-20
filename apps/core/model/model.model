@@ -1,0 +1,10 @@
+{
+	'model':'core.models.model',
+	
+	'attributes': {
+		'model': { 'type' :'Data' },
+		'is_single': { 'type' :'Check' },
+		'known_by': { 'type':'Data' }
+		'description': { 'type':'Text' }
+	}
+}
