@@ -1,4 +1,4 @@
-class Todo(chai.backbone.Model):
+class Todo(core.base.Base):
 	def __init__(self):
 		pass
 				
